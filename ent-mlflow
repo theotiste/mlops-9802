@@ -1,0 +1,8 @@
+name: mlops_experiment
+
+entry_points:
+  main:
+    parameters:
+      recherche_modele: {type: string, default: "default_model"}
+      optimisation_modele: {type: string, default: "default_optim"}
+    command: "python main.py --recherche_modele {recherche_modele} --optimisation_modele {optimisation_modele}"
