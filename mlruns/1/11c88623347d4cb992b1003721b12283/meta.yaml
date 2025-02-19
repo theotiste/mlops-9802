@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lucie/test-venv/mlruns/1/11c88623347d4cb992b1003721b12283/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 11c88623347d4cb992b1003721b12283
+run_name: Logistic Regression
+run_uuid: 11c88623347d4cb992b1003721b12283
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739978925258
+status: 1
+tags: []
+user_id: lucie

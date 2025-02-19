@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lucie/test-venv/mlruns/1/cbb6298762254d4aae7ae87ef2e908b7/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: cbb6298762254d4aae7ae87ef2e908b7
+run_name: Session Initialized 2200
+run_uuid: cbb6298762254d4aae7ae87ef2e908b7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739978900935
+status: 1
+tags: []
+user_id: lucie

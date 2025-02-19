@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lucie/test-venv/mlruns/1/207afff8cd624398a38e510e44f185ad/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 207afff8cd624398a38e510e44f185ad
+run_name: Random Forest Classifier
+run_uuid: 207afff8cd624398a38e510e44f185ad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739978928106
+status: 1
+tags: []
+user_id: lucie

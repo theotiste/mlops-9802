@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lucie/test-venv/mlruns/1/861c632307c64a09a29be75c24ed2f52/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 861c632307c64a09a29be75c24ed2f52
+run_name: Naive Bayes
+run_uuid: 861c632307c64a09a29be75c24ed2f52
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739978929301
+status: 1
+tags: []
+user_id: lucie

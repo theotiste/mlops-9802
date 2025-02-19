@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lucie/test-venv/mlruns/1/6247eaa2fb8b45e78ecc9d924cf693af/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 6247eaa2fb8b45e78ecc9d924cf693af
+run_name: Decision Tree Classifier
+run_uuid: 6247eaa2fb8b45e78ecc9d924cf693af
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739978927570
+status: 1
+tags: []
+user_id: lucie
