@@ -38,10 +38,11 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t mlops-9802:latest .
-          docker tag mlops-9802:latest ${{ secrets.DOCKER_USERNAME }}/mlops-9802:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/mlops-9802:latest    
+#          docker tag mlops-9802:latest ${{ secrets.DOCKER_USERNAME }}/mlops-9802:latest
+#          docker push ${{ secrets.DOCKER_USERNAME }}/mlops-9802:latest    
   
-  
+          docker tag mlops-9802:latest ftheotiste/mlops-9802:latest
+          docker push ftheotiste/mlops-9802:latest    
   
   
   
