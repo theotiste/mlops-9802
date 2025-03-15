@@ -28,7 +28,7 @@ jobs:
 
       - name: Linting with flake8
         run: |
-          flake8 app.py app_monitoring2.py app_monitoring1.py --max-line-length=120
+          flake8 scripts/ --max-line-length=120
 
       - name: Run unit tests
         run: |
