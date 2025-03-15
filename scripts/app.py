@@ -4,8 +4,7 @@ import pandas as pd
 
 app = Flask(__name__)
 model = pickle.load(open("catboost_model-1.pkl", "rb"))
-                                        
-
+                                     
 def model_pred(features):
     test_data = pd.DataFrame([features])
     prediction = model.predict(test_data)
