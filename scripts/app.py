@@ -26,9 +26,8 @@ def predict():
         Fico_score = int(request.form["Fico_score"])
         
         prediction = model.predict(
-            [[Customer_id, Credit_line_outstanding, Loan_amt_outstanding, Total_debt_outstanding, Income, Years_employed, Fico_score]]
+          [[Customer_id, Credit_line_outstanding, Loan_amt_outstanding, Total_debt_outstanding, Income, Years_employed, Fico_score]]
         )
-        
         if prediction[0] == 1:
             return render_template(
                 "index.html",
@@ -39,7 +38,6 @@ def predict():
                 "index.html",
                 prediction_text="loan granted"
             )
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)      
 
