@@ -2,10 +2,14 @@ from flask import Flask, render_template, request
 import pickle
 import pandas as pd
 import os
+import logging
 from arize.pandas.logger import Client, Schema
 from arize.utils.types import ModelTypes, Environments
-from dotenv import load_dotenv   
+from dotenv import load_dotenv
 import datetime
+
+# Configuration des logs
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -13,7 +17,8 @@ ARIZE_SPACE_KEY = os.getenv("SPACE_KEY")
 ARIZE_API_KEY = os.getenv("API_KEY")
 
 if not ARIZE_SPACE_KEY or not ARIZE_API_KEY:
-    raise ValueError(" ERREUR : Les clés API Arize ne sont pas définies.")
+    logging.error(" ERREUR : Les clés API Arize ne sont pas définies.")
+    raise ValueError("Les clés API Arize sont manquantes")
 
 # Initialiser Arize Client
 arize_client = Client(space_key=ARIZE_SPACE_KEY, api_key=ARIZE_API_KEY)
@@ -44,9 +49,12 @@ def predict():
         dataframe = pd.DataFrame([data])
         arize_client.log(dataframe=dataframe, model_id="theo_model", model_version="v1", model_type=ModelTypes.SCORE_CATEGORICAL, environment=Environments.PRODUCTION, schema=schema)
 
+        logging.info(f" Prédiction envoyée à Arize : {data}")
+
         return render_template("index.html", prediction_text="Loan granted" if prediction == 0 else "Make an appointment with your banker")
 
     except Exception as e:
+        logging.error(f" Erreur lors de la prédiction : {e}")
         return str(e)
 
 if __name__ == "__main__":
