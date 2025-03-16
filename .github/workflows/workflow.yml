@@ -83,7 +83,10 @@ jobs:
         run: |
           source venv/bin/activate
           pip install pytest
-      
+
+      - name: Vérifier les fichiers présents dans le runner
+        run: ls -R
+           
       - name: Test API endpoint
         run: |
           sleep 5  # Attendre que le serveur démarre
