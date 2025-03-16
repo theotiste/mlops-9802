@@ -1,0 +1,96 @@
+name: Advanced CI/CD for Flask App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 pytest requests
+
+      - name: Linting with flake8
+        run: |
+          flake8 scripts/ --max-line-length=120
+
+      - name: Run unit tests
+        env:
+          ARIZE_SPACE_KEY: ${{secrets.ARIZE_SPACE_KEY}}    
+          ARIZE_API_KEY: ${{secrets.ARIZE_API_KEY}}
+        run: |
+          pytest tests/   
+   
+
+  docker:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        env:
+          DOCKERHUB_USER: ${{secrets.DOCKERHUB_USER}}
+          DOCKERHUB_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
+        run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
+  
+      - name: Build and push Docker image
+        run: |
+          docker build -t mlops9802:latest .
+          docker tag mlops9802:latest ${{secrets.DOCKERHUB_USER}}/mlops9802:latest
+          docker push ${{secrets.DOCKERHUB_USER}}/mlops9802:latest
+
+  test-docker:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Docker image from DockerHub
+        run: docker pull ${{secrets.DOCKERHUB_USER}}/mlops9802:latest
+
+      - name: Run container for testing{
+        run: |
+          docker run -d -p 5000:5000 --name mlops9802-test ${{secrets.DOCKERHUB_USER}}/mlops9802:latest
+
+      - name: Check if container is running
+        run: |
+          docker ps | grep mlops9802-test
+
+     
+      - name: Create venv
+        run: |
+          python -m venv venv
+          . venv/bin/activate
+
+      - name: Install dependencies
+        run: |
+          source venv/bin/activate
+          pip install pytest
+      
+      - name: Test API endpoint
+        run: |
+          sleep 5  # Attendre que le serveur démarre
+          source venv/bin/activate
+          python -m pytest mlops-9802/tests/
+        
+      - name: Cleanup Docker container
+        run: |
+          docker stop mlops9802-test
+          docker rm mlops9802-test
