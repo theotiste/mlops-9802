@@ -88,7 +88,10 @@ jobs:
 
       - name: Vérifier les fichiers présents dans le runner
         run: ls -R
-               
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+                      
       - name: Test API endpoint
         run: |
           sleep 5  # Attendre que le serveur démarre
