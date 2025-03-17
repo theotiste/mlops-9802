@@ -82,7 +82,7 @@ jobs:
           pip install -r requirements.txt
           pip install Flask pytest requests
                         
-      - name: Test API endpoint
+      - name: Test API endpoint 
         run: |
           sleep 5  # Attendre que le serveur démarre 
           pytest tests/
