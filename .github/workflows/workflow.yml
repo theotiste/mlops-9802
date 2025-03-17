@@ -75,27 +75,16 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-       
-      - name: Create venv
-        run: |
-          python -m venv venv
-          . venv/bin/activate
 
       - name: Install dependencies
         run: |
-          source venv/bin/activate
-          pip install pytest
-
-      - name: Vérifier les fichiers présents dans le runner
-        run: ls -R
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-                      
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install Flask pytest requests
+                        
       - name: Test API endpoint
         run: |
           sleep 5  # Attendre que le serveur démarre
-          source venv/bin/activate
           pytest tests/
         
       - name: Cleanup Docker container
