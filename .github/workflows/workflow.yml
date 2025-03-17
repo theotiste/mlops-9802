@@ -96,7 +96,7 @@ jobs:
         run: |
           sleep 5  # Attendre que le serveur démarre
           source venv/bin/activate
-          pytest ./tests
+          pytest tests/
         
       - name: Cleanup Docker container
         run: |
