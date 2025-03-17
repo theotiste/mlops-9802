@@ -83,10 +83,12 @@ jobs:
           pip install Flask pytest requests
                         
       - name: Test API endpoint 
+        env:
+          ARIZE_SPACE_KEY: ${{secrets.ARIZE_SPACE_KEY}}    
+          ARIZE_API_KEY: ${{secrets.ARIZE_API_KEY}}
         run: |
-          sleep 5  # Attendre que le serveur démarre 
-          pytest tests/
-        
+          pytest tests/   
+    
       - name: Cleanup Docker container
         run: |
           docker stop mlops9802-test
