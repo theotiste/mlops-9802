@@ -4,7 +4,7 @@ import os
 # Ajouter le dossier 'scripts/' au chemin d'importation
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../scripts")))
 
-from scripts.app import model_pred
+from app import model_pred
 import pytest
 
 new_data = {'customer_id': 2243629,
