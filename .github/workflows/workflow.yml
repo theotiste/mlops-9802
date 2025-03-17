@@ -88,16 +88,12 @@ jobs:
 
       - name: Vérifier les fichiers présents dans le runner
         run: ls -R
-
-      - name: Run tests
-        run: pytest --rootdir=$(pwd) tests/
-
-           
+               
       - name: Test API endpoint
         run: |
           sleep 5  # Attendre que le serveur démarre
           source venv/bin/activate
-          pytest tests/
+          pytest ./tests
         
       - name: Cleanup Docker container
         run: |
