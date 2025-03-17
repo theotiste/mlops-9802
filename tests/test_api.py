@@ -14,8 +14,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Charger les variables d'environnement
 load_dotenv()
-ARIZE_SPACE_KEY = os.getenv("SPACE_KEY")
-ARIZE_API_KEY = os.getenv("API_KEY")
+ARIZE_SPACE_KEY = os.getenv("ARIZE_SPACE_KEY")
+ARIZE_API_KEY = os.getenv("ARIZE_API_KEY")
 
 if not ARIZE_SPACE_KEY or not ARIZE_API_KEY: 
     logging.error(" ERREUR : Les clés API Arize ne sont pas définies.")
