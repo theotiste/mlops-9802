@@ -84,7 +84,7 @@ jobs:
                         
       - name: Test API endpoint
         run: |
-          sleep 5  # Attendre que le serveur démarre
+          sleep 5  # Attendre que le serveur démarre 
           pytest tests/
         
       - name: Cleanup Docker container
